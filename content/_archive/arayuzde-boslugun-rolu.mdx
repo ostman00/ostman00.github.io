@@ -1,0 +1,36 @@
+---
+title: Arayüzde boşluk, sadece boşluk değildir
+excerpt: Okunabilirliği ve karar verme hızını belirleyen görünmez tasarım malzemesi üzerine notlar.
+category: Tasarım
+date: "2026-08-29"
+readingTime: "5 dk okuma"
+featured: false
+---
+
+Boşluk, bir ekranın nefes almasını sağlar. Fakat iyi bir arayüzdeki boşluk rastgele bırakılmış alan değildir; hangi öğelerin aynı gruba ait olduğunu anlatan sessiz bir işarettir.
+
+Başlık ile metin arasındaki mesafe, kartlar arasındaki boşluktan küçük olduğunda kullanıcı ilişkiyi hızla kurar. Bölümler arasındaki daha büyük mesafe ise yeni bir düşünceye geçildiğini anlatır.
+
+```css
+/* Kötü örnek: Aynı mesafe, zayıf hiyerarşi */
+.card {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.card h3 {
+  margin-bottom: 1rem;
+}
+
+/* İyi örnek: Yakınlık yasası (Law of Proximity) */
+.card {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+```
+
+Daha fazla öğe eklemek gerektiğinde ilk refleks boşluğu azaltmak olmamalı. Önce hiyerarşiyi sadeleştirmek çoğu zaman daha iyi bir çözümdür. 
+
+Tasarımda **negatif alan (negative space)**, pozitif öğeler kadar güçlü bir iletişim aracıdır. Boşluğu tasarladığınızda, aslında okuyucunun dikkatini nereye yönlendireceğinizi tasarlamış olursunuz.

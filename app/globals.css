@@ -1,0 +1,180 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-action-primary: #37F712; /* Terminal green */
+  --color-action-primary-hover: #4ade80; 
+  --color-action-primary-active: #22c55e; 
+  --color-action-destructive: #FF2157; /* Terminal red */
+
+  --color-text-primary: #e4e4e7; /* zinc-200 */
+  --color-text-secondary: #a1a1aa; /* zinc-400 */
+  --color-text-tertiary: #52525b; /* zinc-500 */
+  --color-text-on-action: #000000; /* black on green */
+
+  --color-surface-page: #000000; /* Void black */
+  --color-surface-card: #09090b; /* zinc-950 */
+  --color-surface-sunken: #18181b; /* zinc-900 */
+
+  --color-border-default: #27272a; /* zinc-800 */
+  --color-border-strong: #3f3f46; /* zinc-700 */
+  --color-border-focus: #37F712; /* Terminal green focus */
+  --color-border-error: #FF2157;
+
+  /* Force monospace everywhere */
+  --font-sans: "JetBrains Mono", "Fira Code", monospace;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --shadow-focus-ring: 0 0 0 1px #000000, 0 0 0 2px #37F712;
+
+  /* Completely sharp edges */
+  --radius-button: 0px;
+  --radius-card: 0px;
+  --radius-modal: 0px;
+  --radius-badge: 0px;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--color-border-default);
+  }
+
+  html {
+    font-family: var(--font-mono);
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    background-color: var(--color-surface-page);
+    color: var(--color-text-primary);
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-surface-page);
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-action-primary);
+    color: var(--color-text-on-action);
+  }
+}
+
+/* Typography styles for MDX */
+.prose {
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+}
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  color: var(--color-action-primary); /* Terminal green headers */
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-transform: lowercase;
+}
+.prose h1::before { content: "# "; opacity: 0.5; }
+.prose h2::before { content: "## "; opacity: 0.5; }
+.prose h3::before { content: "### "; opacity: 0.5; }
+
+.prose p {
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+.prose a {
+  color: var(--color-action-primary);
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.prose a:hover {
+  text-decoration-thickness: 2px;
+  background-color: var(--color-action-primary);
+  color: var(--color-text-on-action);
+}
+.prose strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+.prose blockquote {
+  border-left-width: 2px;
+  border-left-color: var(--color-action-primary);
+  padding-left: 1.25rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  background-color: var(--color-surface-card);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.prose code {
+  color: var(--color-action-primary);
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.9em;
+  font-family: var(--font-mono);
+  border: none;
+}
+.prose code::before, .prose code::after {
+  content: "`";
+  opacity: 0.5;
+}
+.prose pre {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+}
+.prose pre code {
+  color: var(--color-text-primary);
+}
+.prose pre code::before, .prose pre code::after {
+  content: "";
+}
+.prose ul li::marker {
+  color: var(--color-action-primary);
+}
+.prose hr {
+  border-color: var(--color-border-strong);
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--color-border-default);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+.prose th {
+  border: 1px solid var(--color-border-default);
+  background-color: var(--color-surface-sunken);
+  color: var(--color-action-primary);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+.prose td {
+  border: 1px solid var(--color-border-default);
+  padding: 0.6rem 0.8rem;
+  color: var(--color-text-secondary);
+}
+.prose tr:nth-child(even) {
+  background-color: var(--color-surface-card);
+}
+.prose tr:hover {
+  background-color: var(--color-surface-sunken);
+}
