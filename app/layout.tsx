@@ -18,7 +18,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: { default: "Osman Erdoğan | Workspace", template: "%s | Osman Erdoğan" },
   description: "Ürün, tasarım, teknoloji ve daha dikkatli bir çalışma biçimi üzerine notlar.",
-  metadataBase: new URL("https://deniznotlar.example"),
+  metadataBase: new URL("https://ostman00.github.io"),
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
   openGraph: { type: "website", locale: "tr_TR", siteName: "Osman Erdoğan | Workspace" },
 };
 
