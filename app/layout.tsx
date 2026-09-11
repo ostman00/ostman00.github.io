@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ostman00.github.io"),
   icons: {
     icon: "/icon.png",
-    shortcut: "/favicon.ico",
+    shortcut: "/icon.png",
     apple: "/icon.png",
   },
   openGraph: { type: "website", locale: "tr_TR", siteName: "Osman Erdoğan | Workspace" },

@@ -37,6 +37,7 @@ export function SiteHeader() {
           className="flex items-center gap-2 text-sm font-bold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] lowercase"
           aria-label="Ana Sayfa"
         >
+          <img src="/icon.png" alt="Site İkonu" className="size-6 object-contain" />
           <Terminal className="size-5 text-[var(--color-action-primary)]" aria-hidden="true" />
           <span className="text-[var(--color-action-primary)]">osman</span>
           <span className="text-[var(--color-text-secondary)]">@localhost:~$</span>
