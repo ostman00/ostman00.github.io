@@ -29,7 +29,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="tr" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('terminal_theme');
+                  if (saved && ['classic', 'amber', 'matrix', 'monochrome'].indexOf(saved) !== -1) {
+                    document.documentElement.setAttribute('data-theme', saved);
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased min-h-screen">
         <div className="flex min-h-screen flex-col">
           {children}
@@ -38,3 +54,4 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+
