@@ -1,0 +1,2 @@
+yandex.ru, 19783783, DIRECT
+yandex.com, 19783783, DIRECT
