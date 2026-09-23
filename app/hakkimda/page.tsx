@@ -1,4 +1,5 @@
 import { SiteHeader } from "@/components/site-header";
+import { ThreeTerminalCard } from "@/components/three-terminal-card";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function AboutPage() {
           </div>
         </header>
 
-        <div className="border border-[var(--color-border-default)] bg-[var(--color-surface-card)] p-6">
+        <ThreeTerminalCard variant="hex" opacity={0.25} className="p-6">
           <div className="mb-6 leading-relaxed">
             <span className="text-[var(--color-action-primary)] font-bold">osman@localhost</span><br />
             ----------------------------------------<br />
@@ -53,7 +54,7 @@ export default function AboutPage() {
               İş birlikleri, projeler veya iletişim için <a href="/iletisim">iletişim sayfasından</a> ya da doğrudan GitHub/LinkedIn profillerim üzerinden bana ulaşabilirsiniz.
             </p>
           </div>
-        </div>
+        </ThreeTerminalCard>
 
         {/* JSON Resume Section */}
         <section className="mt-16">
@@ -61,7 +62,7 @@ export default function AboutPage() {
             <span className="text-[var(--color-action-primary)] font-bold mr-2">$</span>
             <span>cat resume.json</span>
           </div>
-          <div className="border border-[var(--color-border-default)] bg-[#050505] p-6 overflow-x-auto text-xs sm:text-sm">
+          <ThreeTerminalCard variant="matrix" opacity={0.35} className="p-6 overflow-x-auto text-xs sm:text-sm">
             <pre className="text-[var(--color-text-secondary)]">
 <span className="text-white">{`{`}</span>{`
   `}
@@ -115,7 +116,7 @@ export default function AboutPage() {
   }
 `}<span className="text-white">{`}`}</span>
             </pre>
-          </div>
+          </ThreeTerminalCard>
         </section>
       </main>
     </>

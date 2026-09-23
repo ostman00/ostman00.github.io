@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { ThreeTerminalCard } from "@/components/three-terminal-card";
 
 const ACCESS_KEY =
   process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "676b1d99-f63a-43e3-852d-4de0b87a065e";
@@ -63,7 +64,7 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-[var(--color-action-primary)] bg-[var(--color-surface-card)] p-6 text-[var(--color-text-primary)] font-mono leading-relaxed flex flex-col gap-4">
+      <ThreeTerminalCard variant="waves" opacity={0.35} className="p-6 border-[var(--color-action-primary)] text-[var(--color-text-primary)] font-mono leading-relaxed flex flex-col gap-4">
         <div className="text-[var(--color-action-primary)] font-bold text-base flex items-center gap-2">
           <span>&gt;</span>
           <span>[STATUS 200 OK] PACKET_TRANSMITTED_SUCCESSFULLY</span>
@@ -86,16 +87,17 @@ export function ContactForm() {
             <span>./send_message.sh --new-session</span>
           </button>
         </div>
-      </div>
+      </ThreeTerminalCard>
     );
   }
 
   return (
-    <form 
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-6 p-6 border border-[var(--color-border-default)] bg-[var(--color-surface-card)] font-mono"
-      noValidate
-    >
+    <ThreeTerminalCard variant="waves" opacity={0.45} className="p-6">
+      <form 
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-6 font-mono"
+        noValidate
+      >
       <div className="flex flex-col gap-2">
         <label htmlFor="name" className="text-[var(--color-action-primary)] font-bold">
           &gt; INPUT_NAME
@@ -108,7 +110,7 @@ export function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           disabled={status === "submitting"}
-          className="flex h-10 w-full border border-[var(--color-border-strong)] bg-[var(--color-surface-page)] px-3 py-2 text-[var(--color-text-primary)] font-mono placeholder:text-[var(--color-text-tertiary)] focus-visible:outline-none focus-visible:border-[var(--color-action-primary)] disabled:opacity-50"
+          className="flex h-10 w-full border border-[var(--color-border-strong)] bg-black/80 backdrop-blur-sm px-3 py-2 text-[var(--color-text-primary)] font-mono placeholder:text-[var(--color-text-tertiary)] focus-visible:outline-none focus-visible:border-[var(--color-action-primary)] disabled:opacity-50"
           placeholder="e.g. Ahmet Yılmaz"
         />
       </div>
@@ -125,7 +127,7 @@ export function ContactForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={status === "submitting"}
-          className="flex h-10 w-full border border-[var(--color-border-strong)] bg-[var(--color-surface-page)] px-3 py-2 text-[var(--color-text-primary)] font-mono placeholder:text-[var(--color-text-tertiary)] focus-visible:outline-none focus-visible:border-[var(--color-action-primary)] disabled:opacity-50"
+          className="flex h-10 w-full border border-[var(--color-border-strong)] bg-black/80 backdrop-blur-sm px-3 py-2 text-[var(--color-text-primary)] font-mono placeholder:text-[var(--color-text-tertiary)] focus-visible:outline-none focus-visible:border-[var(--color-action-primary)] disabled:opacity-50"
           placeholder="e.g. ahmet@example.com"
         />
       </div>
@@ -142,7 +144,7 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           disabled={status === "submitting"}
-          className="flex w-full border border-[var(--color-border-strong)] bg-[var(--color-surface-page)] px-3 py-2 text-[var(--color-text-primary)] font-mono placeholder:text-[var(--color-text-tertiary)] focus-visible:outline-none focus-visible:border-[var(--color-action-primary)] disabled:opacity-50"
+          className="flex w-full border border-[var(--color-border-strong)] bg-black/80 backdrop-blur-sm px-3 py-2 text-[var(--color-text-primary)] font-mono placeholder:text-[var(--color-text-tertiary)] focus-visible:outline-none focus-visible:border-[var(--color-action-primary)] disabled:opacity-50"
           placeholder="Mesajınızı buraya yazın..."
         />
       </div>
@@ -169,5 +171,6 @@ export function ContactForm() {
         )}
       </button>
     </form>
+    </ThreeTerminalCard>
   );
 }

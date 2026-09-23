@@ -1,7 +1,10 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { SiteHeader } from "@/components/site-header";
 import { getSortedPostsData } from "@/lib/posts";
 import { TerminalEasterEgg } from "@/components/terminal-easter-egg";
+
+import { ThreeTerminalCard } from "@/components/three-terminal-card";
 
 export default function Home() {
   const posts = getSortedPostsData();
@@ -12,7 +15,7 @@ export default function Home() {
     <>
       <SiteHeader />
       <main className="flex-1 px-6 py-12 max-w-4xl mx-auto w-full font-mono text-sm sm:text-base">
-        {/* Terminal Intro */}
+        {/* Terminal Intro with 3D Background */}
         <section className="mb-16">
           <div className="flex flex-col gap-2">
             <div className="text-[var(--color-text-secondary)]">
@@ -24,14 +27,14 @@ export default function Home() {
               <span className="text-[var(--color-action-primary)] font-bold mr-2">$</span>
               <span>cat whoami.txt</span>
             </div>
-            <div className="mt-4 border border-[var(--color-border-default)] bg-[var(--color-surface-card)] p-4 text-[var(--color-text-primary)] leading-relaxed">
+            <ThreeTerminalCard variant="dots" opacity={0.35} className="mt-4 p-5 text-[var(--color-text-primary)] leading-relaxed shadow-lg">
               &gt; SYSTEM_READY<br />
               &gt; INITIALIZING PERSONAL_BLOG v2.0...<br /><br />
               Merhaba, ben <span className="text-[var(--color-action-primary)] font-bold">Osman</span>. Bilgisayar mühendisiyim.<br />
               Full Stack web (React, Next.js), yüksek erişilebilir DevOps/SysAdmin mimarileri (Linux, HAProxy, PostgreSQL, Moodle) ve Yazılım Test/QA alanlarında çalışıyorum.<br /><br />
               Mimari kararlar, karşılaştığım sistem hataları, altyapı optimizasyonları ve test süreçlerinden edindiğim dersleri buraya not alıyorum.<br /><br />
               Daha iyi sistemler geliştirmek, sadece daha çok kod yazmakla değil; sağlam bir mimari, kesintisiz altyapı ve doğru problemleri çözmekle başlar.
-            </div>
+            </ThreeTerminalCard>
             <div className="mt-4 flex items-center text-[var(--color-text-primary)]">
               <span className="text-[var(--color-action-primary)] font-bold mr-2">$</span>
               <span className="animate-pulse">_</span>
@@ -45,7 +48,7 @@ export default function Home() {
             <div className="mb-4 text-[var(--color-action-primary)] font-bold border-b border-[var(--color-border-default)] pb-2 uppercase">
               // LATEST_SYSTEM_LOG
             </div>
-            <article className="border-l-2 border-[var(--color-action-primary)] pl-4 py-2 hover:bg-[var(--color-surface-sunken)] transition-colors">
+            <ThreeTerminalCard variant="grid" opacity={0.30} className="border-l-4 border-l-[var(--color-action-primary)] p-5 hover:border-[var(--color-action-primary)] transition-colors">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-[var(--color-text-secondary)] mb-2">
                 <span>[TIMESTAMP: {featured.date}]</span>
                 <span>[TAG: {featured.category}]</span>
@@ -61,7 +64,7 @@ export default function Home() {
               <Link href={`/blog/${featured.slug}`} className="text-[var(--color-action-primary)] hover:underline inline-flex items-center text-sm">
                 [EXECUTE_READ]
               </Link>
-            </article>
+            </ThreeTerminalCard>
           </section>
         )}
 
@@ -72,7 +75,7 @@ export default function Home() {
             <span>TOTAL: {recentPosts.length}</span>
           </div>
           
-          <div className="flex flex-col border border-[var(--color-border-default)] bg-[var(--color-surface-card)]">
+          <ThreeTerminalCard variant="particles" opacity={0.25} className="flex flex-col">
             {recentPosts.map((post, i) => (
               <Link 
                 key={post.slug} 
@@ -90,7 +93,7 @@ export default function Home() {
                 </div>
               </Link>
             ))}
-          </div>
+          </ThreeTerminalCard>
           <div className="mt-4">
             <Link href="/blog" className="text-[var(--color-action-primary)] hover:underline text-sm">
               &gt; ls -la /blog
