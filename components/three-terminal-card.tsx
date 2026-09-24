@@ -218,13 +218,25 @@ export function ThreeTerminalCard({
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
     camera.position.z = 1;
 
-    // Color: Terminal Green #37F712
+    // Helper to read theme color from CSS variables
+    const getThemeColor = () => {
+      try {
+        const computed = getComputedStyle(document.documentElement)
+          .getPropertyValue("--color-action-primary")
+          .trim();
+        if (computed) {
+          return new THREE.Color(computed);
+        }
+      } catch {}
+      return new THREE.Color("#37F712");
+    };
+
     const uniforms = {
       uTime: { value: 0 },
       uResolution: { value: new THREE.Vector2() },
       uMouse: { value: new THREE.Vector2() },
       uOpacity: { value: opacity },
-      uColor: { value: new THREE.Color("#37F712") },
+      uColor: { value: getThemeColor() },
     };
 
     const geometry = new THREE.PlaneGeometry(2, 2);
@@ -250,6 +262,15 @@ export function ThreeTerminalCard({
       renderer.setSize(width, height, false);
       uniforms.uResolution.value.set(width, height);
     };
+
+    // Watch for retro theme changes on documentElement
+    const themeObserver = new MutationObserver(() => {
+      uniforms.uColor.value.copy(getThemeColor());
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
 
     const renderLoop = (now: number) => {
       if (!isVisible || document.hidden) {
@@ -282,6 +303,7 @@ export function ThreeTerminalCard({
 
     return () => {
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      themeObserver.disconnect();
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       geometry.dispose();

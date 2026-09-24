@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
+import { ThreeTerminalCard } from "@/components/three-terminal-card";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -56,7 +57,7 @@ export default function ProjectsPage() {
           </p>
         </header>
 
-        <div className="flex flex-col border border-[var(--color-border-default)] bg-[var(--color-surface-card)]">
+        <ThreeTerminalCard variant="grid" opacity={0.25} className="flex flex-col">
           <div className="flex flex-row p-3 border-b border-[var(--color-border-default)] text-[var(--color-text-tertiary)] text-xs font-bold uppercase tracking-wider">
             <div className="w-16 shrink-0">PID</div>
             <div className="w-24 shrink-0 hidden sm:block">USER</div>
@@ -112,7 +113,7 @@ export default function ProjectsPage() {
               </div>
             </div>
           ))}
-        </div>
+        </ThreeTerminalCard>
       </main>
     </>
   );

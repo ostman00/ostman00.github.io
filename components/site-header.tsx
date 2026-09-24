@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Terminal } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Button } from "./ui/button";
 import { ThemeSwitcher } from "./theme-switcher";
 
 export function SiteHeader() {
@@ -90,20 +89,19 @@ export function SiteHeader() {
         {/* Mobile Navigation Toggle + Theme */}
         <div className="flex items-center gap-3.5 md:hidden">
           <ThemeSwitcher />
-          <Button
-            variant="secondary"
-            size="icon"
+          <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-label={isMobileMenuOpen ? "Menüyü kapat" : "Menüyü aç"}
-            className="border border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] hover:border-[var(--color-action-primary)] hover:text-[var(--color-action-primary)] rounded-none"
+            className="size-10 flex items-center justify-center border border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] hover:border-[var(--color-action-primary)] hover:text-[var(--color-action-primary)] text-[var(--color-text-primary)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-action-primary)] cursor-pointer"
           >
             {isMobileMenuOpen ? (
               <X className="size-4" aria-hidden="true" />
             ) : (
               <Menu className="size-4" aria-hidden="true" />
             )}
-          </Button>
+          </button>
         </div>
       </div>
 

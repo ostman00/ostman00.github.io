@@ -1,5 +1,4 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { SiteHeader } from "@/components/site-header";
 import { getSortedPostsData } from "@/lib/posts";
 import { TerminalEasterEgg } from "@/components/terminal-easter-egg";
